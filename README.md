@@ -3,7 +3,6 @@
 ### Link: https://www.kaggle.com/c/home-credit-default-risk/data
 
 <br>
-<br>
 
-## Structure of my code
+## Code structure
 *  **./csv_to_psql:** Import csv files to PostgresDB
