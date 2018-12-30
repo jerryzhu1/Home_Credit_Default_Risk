@@ -4,7 +4,7 @@ import psycopg2
 conn = psycopg2.connect("host=localhost dbname=home_credit_default_risk user=postgres password=")
 cur = conn.cursor()
 
-# Build application_test
+# Build tabel
 cur.execute("""
 CREATE TABLE credit_card_balance
 (
