@@ -1,12 +1,13 @@
 import psycopg2
 
 # password deleted
-conn = psycopg2.connect("host=localhost dbname=home_credit_default_risk user=postgres password=")
+conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=54zhusiqi")
 cur = conn.cursor()
 
 # Build table
 cur.execute("""
-CREATE TABLE bureau
+DROP TABLE IF EXISTS kaggle_hcdr.bureau;
+CREATE TABLE kaggle_hcdr.bureau
 (
     SK_ID_CURR numeric,
     SK_ID_BUREAU numeric,
@@ -29,7 +30,7 @@ CREATE TABLE bureau
 """)
 
 cur.execute("""
-    COPY bureau(SK_ID_CURR, SK_ID_BUREAU, CREDIT_ACTIVE, CREDIT_CURRENCY, DAYS_CREDIT, CREDIT_DAY_OVERDUE, DAYS_CREDIT_ENDDATE, DAYS_ENDDATE_FACT, AMT_CREDIT_MAX_OVERDUE, CNT_CREDIT_PROLONG, AMT_CREDIT_SUM, AMT_CREDIT_SUM_DEBT, AMT_CREDIT_SUM_LIMIT, AMT_CREDIT_SUM_OVERDUE, CREDIT_TYPE, DAYS_CREDIT_UPDATE, AMT_ANNUITY)
+    COPY kaggle_hcdr.bureau(SK_ID_CURR, SK_ID_BUREAU, CREDIT_ACTIVE, CREDIT_CURRENCY, DAYS_CREDIT, CREDIT_DAY_OVERDUE, DAYS_CREDIT_ENDDATE, DAYS_ENDDATE_FACT, AMT_CREDIT_MAX_OVERDUE, CNT_CREDIT_PROLONG, AMT_CREDIT_SUM, AMT_CREDIT_SUM_DEBT, AMT_CREDIT_SUM_LIMIT, AMT_CREDIT_SUM_OVERDUE, CREDIT_TYPE, DAYS_CREDIT_UPDATE, AMT_ANNUITY)
     FROM 'D:\\Projects\\Home_Credit_Default_Risk\\data\\bureau.csv' DELIMITER ',' CSV HEADER;
 """)
 
